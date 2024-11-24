@@ -1,0 +1,18 @@
+{
+  "name": "vane_web3_lib",
+  "module": "main.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.mjs",
+      "require": "./dist/main.js"
+    }
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
