@@ -11,6 +11,7 @@ interface TxStatusData {
    
 export type TxStatus = 
     | { type: "Genesis" }
+    | { type: "ReceiverNotRegistered" }
     | { type: "RecvAddrConfirmed" }
     | { type: "RecvAddrConfirmationPassed" }
     | { type: "NetConfirmed" }
@@ -33,10 +34,10 @@ export interface TxStateMachine {
     callPayload?: Uint8Array; // Fixed 32 bytes
     inboundReqId?: number; // u64
     outboundReqId?: number; // u64
-
+    txNonce: number
 }
 
-class TxStateMachineManager {
+export class TxStateMachineManager {
     private tx: TxStateMachine;
    
     constructor(tx: TxStateMachine) {
@@ -91,7 +92,8 @@ class TxStateMachineManager {
         multiId: "", // Generate hash of sender+receiver
         network,
         status: {type: "Genesis"},
-        amount
+        amount,
+        txNonce: 0
       });
     }
 }
