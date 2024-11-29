@@ -12,6 +12,10 @@
       "require": "./dist/main.js"
     }
   },
+  "scripts": {
+    "build": "bun build ./main.ts --outdir dist && bun run build:types",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
